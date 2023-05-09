@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   # Routes for the Comment resource:
+  root to: "posts#index"
 
   # CREATE
   post("/insert_comment", { :controller => "comments", :action => "create" })
