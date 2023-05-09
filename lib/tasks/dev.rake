@@ -11,7 +11,7 @@ namespace :dev do
       end
 
       user.posts.create(
-        content: Faker::Movies::Lebowski.quote,
+        content: Faker::TvShows::MichaelScott.quote,
       )
     end
   end
