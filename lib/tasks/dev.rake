@@ -1,3 +1,18 @@
-desc "Hydrate the database with some sample data to look at so that developing is easier"
-task({ :sample_data => :environment}) do
+namespace :dev do
+  desc "TODO"
+  task sample_data: :environment do
+    100.times do |i|
+      username = "#{Faker::Creature::Animal.name.split(" ").join("-")}-#{i}"
+      user = User.create(
+        username: username,
+        email: "#{username}@example.com",
+      ) do |u|
+        u.password = "password"
+      end
+
+      user.posts.create(
+        content: Faker::Movies::Lebowski.quote,
+      )
+    end
+  end
 end
