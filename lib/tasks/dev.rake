@@ -1,6 +1,23 @@
 namespace :dev do
   desc "TODO"
   task sample_data: :environment do
+    def random_quote
+      case rand(5)
+      when 0
+        Faker::TvShows::MichaelScott.quote
+      when 1
+        Faker::TvShows::DumbAndDumber.quote
+      when 2
+        Faker::TvShows::RickAndMorty.quote
+      when 3
+        Faker::TvShows::SiliconValley.quote
+      when 4
+        Faker::Movies::Lebowski.quote
+      else
+        Faker::Movie.quote
+      end
+    end
+
     100.times do |i|
       username = "#{Faker::Creature::Animal.name.split(" ").join("-")}-#{i}"
       user = User.create(
@@ -11,18 +28,17 @@ namespace :dev do
       end
 
       user.posts.create(
-        content: Faker::TvShows::MichaelScott.quote,
+        content: random_quote,
       )
-    end
 
-    100.times do |i|
-      user = User.all.sample
-      post = Post.all.sample
+      5.times do |i|
+        post = Post.all.sample
 
-      post.comments.create(
-        user: user,
-        content: Faker::TvShows::DumbAndDumber.quote,
-      )
+        post.comments.create(
+          user: user,
+          content: Faker::TvShows::DumbAndDumber.quote,
+        )
+      end
     end
   end
 end
