@@ -2,9 +2,7 @@ class PostsController < ApplicationController
   before_action :force_user_sign_in, only: [:new, :edit, :create, :update, :destroy]
 
   def index
-    matching_posts = Post.all
-
-    @list_of_posts = matching_posts.order({ :created_at => :desc })
+    @posts = Post.all.order({ :created_at => :desc })
 
     render({ :template => "posts/index.html.erb" })
   end
