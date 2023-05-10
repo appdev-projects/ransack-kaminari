@@ -1,29 +1,5 @@
 <div>
   <div>
-    <h1>
-      Posts
-    </h1>
-  </div>
-</div>
-
-<div class="my-3">
-  <a href="posts/new" class="btn btn-primary">Create Post</a>
-</div>
-
-<%= search_form_for @q do |f| %>
-  <div>
-    <%= f.label :content_cont, "Content containing" %>
-    <%= f.text_field :content_cont, :placeholder => "Enter a few characters" %>
-  </div>
-
-  <%= f.submit :class => "btn btn-primary btn-block" %>
-  
-  <a href="/posts">Clear filters</a>
-<% end %>
-
-<hr>
-<div>
-  <div>
     <table border="1">
       <tr>
         <th>
@@ -54,7 +30,7 @@
         </th>
       </tr>
 
-      <% @posts.each do |a_post| %>
+      <% @list_of_posts.each do |a_post| %>
       <tr>
         <td>
           <%= a_post.id %>
@@ -89,5 +65,3 @@
     </table>
   </div>
 </div>
-
-<hr>

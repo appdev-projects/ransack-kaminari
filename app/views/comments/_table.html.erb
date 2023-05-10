@@ -1,0 +1,46 @@
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Content
+        </th>
+
+        <th>
+          User
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+      </tr>
+
+      <% comments.each do |a_comment| %>
+      <tr>
+        <td>
+          <%= a_comment.id %>
+        </td>
+
+        <td>
+          <%= a_comment.content %>
+        </td>
+
+        <td>
+          <%= a_comment.user.username %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_comment.created_at) %> ago
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

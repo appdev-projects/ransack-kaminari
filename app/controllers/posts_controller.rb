@@ -1,9 +1,24 @@
 class PostsController < ApplicationController
+  before_action :force_user_sign_in, only: [:new, :edit, :create, :update, :destroy]
+
   def index
     @q = Post.all.order({ :created_at => :desc }).ransack(params[:q])
     @posts = @q.result
 
     render({ :template => "posts/index.html.erb" })
+  end
+
+  def new
+    @post = Post.new
+  end
+
+  def edit
+    @post = @current_user.posts.find_by_id params.fetch("path_id")
+    if @post.present?
+      render({ template: "posts/edit" })
+    else
+      redirect_to "/posts", flash: { error: "post does not belong to you" }
+    end
   end
 
   def show
@@ -19,7 +34,7 @@ class PostsController < ApplicationController
   def create
     the_post = Post.new
     the_post.content = params.fetch("query_content")
-    the_post.user_id = params.fetch("query_user_id")
+    the_post.user = @current_user
     the_post.link = params.fetch("query_link")
 
     if the_post.valid?
