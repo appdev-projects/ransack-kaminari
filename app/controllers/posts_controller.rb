@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :force_user_sign_in, only: [:new, :edit, :create, :update, :destroy]
 
   def index
-    @q = Post.all.order({ :created_at => :desc }).ransack(params[:q])
+    @q = Post.all.order({ :created_at => :desc }).page(params[:page]).ransack(params[:q])
     @posts = @q.result
 
     render({ :template => "posts/index.html.erb" })
