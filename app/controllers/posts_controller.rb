@@ -1,8 +1,7 @@
 class PostsController < ApplicationController
   def index
-    matching_posts = Post.all
-
-    @list_of_posts = matching_posts.order({ :created_at => :desc })
+    @q = Post.all.order({ :created_at => :desc }).ransack(params[:q])
+    @posts = @q.result
 
     render({ :template => "posts/index.html.erb" })
   end
@@ -41,7 +40,7 @@ class PostsController < ApplicationController
 
     if the_post.valid?
       the_post.save
-      redirect_to("/posts/#{the_post.id}", { :notice => "Post updated successfully."} )
+      redirect_to("/posts/#{the_post.id}", { :notice => "Post updated successfully." })
     else
       redirect_to("/posts/#{the_post.id}", { :alert => the_post.errors.full_messages.to_sentence })
     end
@@ -53,6 +52,6 @@ class PostsController < ApplicationController
 
     the_post.destroy
 
-    redirect_to("/posts", { :notice => "Post deleted successfully."} )
+    redirect_to("/posts", { :notice => "Post deleted successfully." })
   end
 end

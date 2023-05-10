@@ -46,6 +46,17 @@
   </div>
 </div>
 
+<%= search_form_for @q do |f| %>
+  <div>
+    <%= f.label :content_cont, "Content containing" %>
+    <%= f.text_field :content_cont, :placeholder => "Enter a few characters" %>
+  </div>
+
+  <%= f.submit :class => "btn btn-primary btn-block" %>
+  
+  <a href="/posts">Clear filters</a>
+<% end %>
+
 <hr>
 <div>
   <div>
@@ -79,7 +90,7 @@
         </th>
       </tr>
 
-      <% @list_of_posts.each do |a_post| %>
+      <% @posts.each do |a_post| %>
       <tr>
         <td>
           <%= a_post.id %>
