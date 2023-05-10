@@ -14,5 +14,15 @@ namespace :dev do
         content: Faker::TvShows::MichaelScott.quote,
       )
     end
+
+    100.times do |i|
+      user = User.all.sample
+      post = Post.all.sample
+
+      post.comments.create(
+        user: user,
+        content: Faker::TvShows::DumbAndDumber.quote,
+      )
+    end
   end
 end
