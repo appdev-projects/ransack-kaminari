@@ -36,7 +36,7 @@ namespace :dev do
 
         post.comments.create(
           user: user,
-          content: Faker::TvShows::DumbAndDumber.quote,
+          content: random_quote,
         )
       end
     end
