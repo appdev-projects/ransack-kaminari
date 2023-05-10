@@ -10,10 +10,12 @@
   <a href="posts/new" class="btn btn-primary">Create Post</a>
 </div>
 
+<hr>
+
 <%= search_form_for @q do |f| %>
-  <div>
+  <div class="form-group">
     <%= f.label :content_cont, "Content containing" %>
-    <%= f.text_field :content_cont, :placeholder => "Enter a few characters" %>
+    <%= f.text_field :content_cont, :class => "form-control", :placeholder => "Enter a few characters" %>
   </div>
 
   <%= f.submit :class => "btn btn-primary btn-block" %>
