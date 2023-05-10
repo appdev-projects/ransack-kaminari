@@ -1,6 +1,6 @@
-<div>
-  <div>
-    <table border="1">
+<div class="table-responsive">
+  <table border="1" class="table table-borderless">
+    <thead class="text-nowrap">
       <tr>
         <th>
           ID
@@ -19,28 +19,27 @@
         </th>
 
       </tr>
-
+    </thead>
+    <tbody>
       <% comments.each do |a_comment| %>
-      <tr>
-        <td>
-          <%= a_comment.id %>
-        </td>
+        <tr>
+          <td>
+            <%= a_comment.id %>
+          </td>
 
-        <td>
-          <%= a_comment.content %>
-        </td>
+          <td>
+            <%= a_comment.content %>
+          </td>
 
-        <td>
-          <%= a_comment.user.username %>
-        </td>
+          <td>
+            <%= a_comment.user.username %>
+          </td>
 
-        <td>
-          <%= time_ago_in_words(a_comment.created_at) %> ago
-        </td>
-      </tr>
+          <td>
+            <%= time_ago_in_words(a_comment.created_at) %> ago
+          </td>
+        </tr>
       <% end %>
-    </table>
-  </div>
+    </tbody>
+  </table>
 </div>
-
-<hr>
