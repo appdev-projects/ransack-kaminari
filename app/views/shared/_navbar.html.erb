@@ -10,16 +10,18 @@
 
     <div class="collapse navbar-collapse" id="collapsible-nav-links">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Resources
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a href="/posts" class="dropdown-item">
-              Posts
-            </a>
-          </div>
-        </li>
+        <% if @current_user.present? %>
+          <li class="nav-item">
+            <a href="/user_sign_out" class="nav-link">Sign Out</a>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <a href="/user_sign_in" class="nav-link">Sign In</a>
+          </li>
+          <li class="nav-item">
+            <a href="/user_sign_up" class="nav-link">Sign Up</a>
+          </li>
+        <% end %>
       </ul>
     </div> <!-- .navbar-collapse -->
   </div> <!-- .container -->
