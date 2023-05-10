@@ -1,6 +1,6 @@
-<div>
-  <div>
-    <table border="1">
+<div class="table-responsive">
+  <table border="1" class="table table-borderless">
+    <thead class="text-nowrap">
       <tr>
         <th>
           ID
@@ -23,13 +23,10 @@
         </th>
 
         <th>
-          Updated at
-        </th>
-
-        <th>
         </th>
       </tr>
-
+    </thead>
+    <tbody>
       <% @posts.each do |a_post| %>
       <tr>
         <td>
@@ -41,7 +38,7 @@
         </td>
 
         <td>
-          <%= a_post.user_id %>
+          <%= a_post.user.username %>
         </td>
 
         <td>
@@ -50,9 +47,6 @@
 
         <td>
           <%= time_ago_in_words(a_post.created_at) %> ago
-        </td>
-        <td>
-          <%= time_ago_in_words(a_post.updated_at) %> ago
         </td>
 
         <td>
