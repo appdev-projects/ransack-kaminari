@@ -15,7 +15,6 @@ gem "sassc-rails"
 gem "faker"
 gem "ransack"
 gem "kaminari"
-gem "bootstrap4-kaminari-views"
 
 group :development do
   gem "htmlbeautifier"
